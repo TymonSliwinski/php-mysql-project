@@ -1,6 +1,6 @@
 
 <?php
-$user = $_ENV['DB_USER'] || 'root';
+$user = $_ENV['DB_USER'] ? $_ENV['DB_USER'] : 'root';
 $pass = $_ENV['DB_PASSWORD'];
 
 try {
