@@ -1,17 +1,14 @@
-
 <?php
-$db_name = $_ENV['DB_NAME'] ? $_ENV['DB_NAME'] : 'public';
-$user = $_ENV['DB_USER'] ? $_ENV['DB_USER'] : 'root';
-$pass = $_ENV['DB_PASSWORD'];
-
-try {
-    $dbh = new PDO("mysql:host=db;port=3306;dbname=$db_name", $user, $pass);
-    echo "Connected to DB!";
-    echo "<br/>";
-    print_r($dbh->query('SHOW TABLES')->fetchAll());
-
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
+require_once('../config.php');
+require_once(ROOT_PATH . '/includes/head.php');
 ?>
+    <title>Projekt - Home</title>
+</head>
+<body>
+    <div class="container">
+        <?php include_once(ROOT_PATH . '/includes/navbar.php'); ?>
+
+    <div class="content">
+        <?php include_once(ROOT_PATH . '/includes/content.php') ?>
+    </div>
+    <?php include_once(ROOT_PATH . '/includes/footer.php'); ?>

@@ -1,0 +1,18 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#404 {
+    text-align: center;
+    margin-top: 10%;
+}
+
+div.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #D3D3D3;
+    color: white;
+    text-align: center;
+}
