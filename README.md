@@ -4,6 +4,7 @@
 
 Create **.env** file like this in root directory (same as compose file)  
 ```
+DB_NAME=dbname
 DB_USER=user
 DB_PASSWORD=password
 SQL_INIT_FILE=/path/to/init-file.sql
