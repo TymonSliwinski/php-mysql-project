@@ -1,10 +1,10 @@
 <nav>
     <div class="nav-wrapper">
-        <a href="<?=BASE_URL . "/index.php"?>" class="brand-logo">Job board</a>
+        <b><a href="<?=BASE_URL . "/index.php"?>" class="brand-logo">Job board</a></b>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/offers">Offers</a></li>
-            <li><a href="/companies">Companies</a></li>
-            <li><a href="/register">Register</a></li>
+            <?php if (isset($_SESSION['user'])) echo '<li><a href="/applications">Applications</a></li>'; ?>
+            <li><a href="/users">Profile</a></li>
         </ul>
     </div>
 </nav>

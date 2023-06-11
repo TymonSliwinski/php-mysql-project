@@ -1,3 +1,3 @@
 <?php
-include_once(ROOT_PATH . '/router.php');
+require_once(ROOT_PATH . '/router.php');
 ?>
