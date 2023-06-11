@@ -16,6 +16,7 @@ foreach (scandir(ROOT_PATH . '/controllers') as $file) {
         $controllers[$className] = new $className();
     }
 }
+
 $controller;
 $action;
 
@@ -34,7 +35,6 @@ switch ($route) {
             break;
         }
         $controller = $controllers[$class];
-
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET':
                 $action = 'get';
@@ -49,15 +49,18 @@ switch ($route) {
                 $action = 'delete';
                 break;
             default:
+                echo 'other than GET, POST, PUT, DELETE';
                 notFound();
                 break;
         }
 
         if (!method_exists($controller, $action)) {
+            echo 'method not found';
             notFound();
             break;
         }
-        $controllers->$action($pathParts);
+        // print_r(var_dump($pathParts));
+        $controller->$action($pathParts);
         break;
 }
 ?>

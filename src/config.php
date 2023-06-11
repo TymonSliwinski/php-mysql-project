@@ -2,6 +2,9 @@
 $db_name = $_ENV['DB_NAME'] ? $_ENV['DB_NAME'] : 'public';
 $user = $_ENV['DB_USER'] ? $_ENV['DB_USER'] : 'root';
 $pass = $_ENV['DB_PASSWORD'];
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 
 session_start();
 

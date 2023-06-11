@@ -4,9 +4,10 @@ USE projekt;
 CREATE TABLE IF NOT EXISTS `User` (
     `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(30) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
     `origin` ENUM('LOCAL', 'EXTERNAL'),
-    `createdAt` DATE DEFAULT (NOW()),
-    `updatedAt` DATE DEFAULT (NOW()),
+    `createdAt` TIMESTAMP DEFAULT (NOW()),
+    `updatedAt` TIMESTAMP DEFAULT (NOW()),
     `userType` ENUM('CANDIDATE', 'COMPANY'),
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
@@ -26,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `Company` (
     `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(30) NOT NULL UNIQUE,
     `location` VARCHAR(60) NOT NULL,
+    `description` VARCHAR(255) NOT NULL,
     `userId` INT(10) UNSIGNED NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `FK_CompanyUser` FOREIGN KEY (`userId`) REFERENCES `User` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
@@ -41,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `Offer` (
     `location` VARCHAR(100) NOT NULL,
     `salaryLower` INT(10) DEFAULT NULL,
     `salaryUpper` INT(10) DEFAULT NULL,
-    `createdAt` DATE DEFAULT (NOW()),
+    `createdAt` TIMESTAMP DEFAULT (NOW()),
     `companyId` INT(10) UNSIGNED NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `FK_OfferCompany` FOREIGN KEY (`companyId`) REFERENCES `Company` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
@@ -52,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `Application` (
     `description` VARCHAR(255) DEFAULT NULL,
     `candidateId` INT(10) UNSIGNED NOT NULL,
     `offerId` INT(10) UNSIGNED NOT NULL,
-    `createdAt` DATE DEFAULT (NOW()),
+    `createdAt` TIMESTAMP DEFAULT (NOW()),
     PRIMARY KEY (`id`),
     CONSTRAINT `FK_ApplicationCandidate` FOREIGN KEY (`candidateId`) REFERENCES `Candidate` (`id`) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT `FK_ApplicationOffer` FOREIGN KEY (`offerId`) REFERENCES `Offer` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
